@@ -20,7 +20,8 @@ pipeline {
 
         stage ('Restore packages'){
             steps {
-                 sh 'dotnet restore DemoVersion.csproj'
+                sh "export PATH=${PATH}:${HOME}/.dotnet/tools"
+                sh 'dotnet restore DemoVersion.csproj'
             }
         }
 
