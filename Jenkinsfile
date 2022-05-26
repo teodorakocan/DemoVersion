@@ -11,7 +11,13 @@ pipeline {
 
     stages {
 
-        
+        stage ('Clean workspace')
+        {
+            steps {
+                cleanWs()
+            }
+        }
+
         stage ('Restore packages'){
             steps {
                  sh 'dotnet restore DemoVersion.csproj'
