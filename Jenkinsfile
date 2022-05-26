@@ -1,4 +1,5 @@
-node ('windows-with-vs') {
+pipeline {
+    agent any
 
     environment{
         NEW_VERSION = sh(
