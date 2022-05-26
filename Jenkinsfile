@@ -6,10 +6,6 @@ pipeline {
             script: "printf \$(git rev-parse ${GIT_COMMIT})",
             returnStdout: true
         )
-        dotnet = sh(
-            script: "printf \${PATH}:${HOME}/.dotnet/tools",
-            returnStdout: true
-        )
     }
 
     stages {
@@ -17,8 +13,6 @@ pipeline {
         stage ('Clean workspace')
         {
             steps {
-                echo "dotnet"
-                echo "${dotnet}"
                 cleanWs()
             }
         }
