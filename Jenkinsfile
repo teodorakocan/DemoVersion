@@ -8,15 +8,23 @@ node ('windows-with-vs') {
     }
 
     stages {
-        stage('NugetRestore') {
+
+        stage ('Clean workspace')
+        {
             steps {
-                bat 'nuget restore "%WORKSPACE%\\DemoVersion.sln"'
+                cleanWs()
             }
-        }  
-        stage('Build') {
+        }
+
+        stage ('Restore packages'){
             steps {
-                bat '"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\MSBuild\\15.0\\Bin\\MSBuild.exe" "%WORKSPACE%\\DemoVersion.sln" /t:"Clean" /p:Configuration=Release /p:Platform="x64"'
-                bat '"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\MSBuild\\15.0\\Bin\\MSBuild.exe" "%WORKSPACE%\\DemoVersion.sln" /t:"Rebuild" /p:Configuration=Release /p:Platform="x64"'
+                 sh 'dotnet restore DemoVersion.csproj'
+            }
+        }
+
+        stage ('Build') {
+            steps {
+                sh 'dotnet build DemoVersion.csproj --configuration Release'
             }
         }
     }
