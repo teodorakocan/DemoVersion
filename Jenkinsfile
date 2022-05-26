@@ -1,12 +1,16 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'dotnet-sdk:1.3.1' 
+            args '-v /root/.m2:/root/.m2' 
+        }
+    }
 
     environment{
         NEW_VERSION = sh(
                 script: "printf \$(git rev-parse ${GIT_COMMIT})",
                 returnStdout: true
         )
-        dotnet ='C:\\Program Files (x86)\\dotnet\\'
     }
 
     stages {
