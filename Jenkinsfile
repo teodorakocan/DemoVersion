@@ -1,23 +1,23 @@
-pipeline {
-    agent any
-    triggers {
-        githubPush()
+node ('windows-with-vs') {
+
+    environment{
+        NEW_VERSION = sh(
+                script: "printf \$(git rev-parse ${GIT_COMMIT})",
+                returnStdout: true
+        )
     }
+
     stages {
-        stage('Restore packages'){
-           steps{
-               sh 'dotnet restore WebApplication.sln'
+        stage('NugetRestore') {
+            steps {
+                bat 'nuget restore "%WORKSPACE%\\DemoVersion.sln"'
             }
-         }
-        stage('Clean'){
-           steps{
-               sh 'dotnet clean WebApplication.sln --configuration Release'
+        }  
+        stage('Build') {
+            steps {
+                bat '"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\MSBuild\\15.0\\Bin\\MSBuild.exe" "%WORKSPACE%\\DemoVersion.sln" /t:"Clean" /p:Configuration=Release /p:Platform="x64"'
+                bat '"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\MSBuild\\15.0\\Bin\\MSBuild.exe" "%WORKSPACE%\\DemoVersion.sln" /t:"Rebuild" /p:Configuration=Release /p:Platform="x64"'
             }
-         }
-        stage('Build'){
-           steps{
-               sh 'dotnet build DemoVersion.sln --configuration Release --no-restore'
-            }
-         }
+        }
     }
 }
