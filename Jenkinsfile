@@ -1,8 +1,8 @@
 pipeline {
     agent {
-        docker {
-            image 'bitnami/dotnet-sdk:latest' 
-            args '-v jenkins-data:/var/jenkins_home' 
+        docker 
+        { 
+            image 'mcr.microsoft.com/dotnet/framework/sdk:4.8-20220215-windowsservercore-ltsc2019'
         }
     }
 
@@ -14,45 +14,15 @@ pipeline {
     }
 
     stages {
-
-        stage ('Clean workspace')
-        {
+        stage('NugetRestore') {
             steps {
-                cleanWs()
+                bat 'nuget restore "%WORKSPACE%\\DemoVersion.sln"'
             }
-        }
-
-        stage ('Restore packages'){
+        }  
+        stage('Build') {
             steps {
-                 sh 'dotnet restore DemoVersion.csproj'
-            }
-        }
-
-        stage ('Build') {
-            steps {
-                sh 'dotnet build DemoVersion.csproj --configuration Release'
-            }
-        }
-
-        stage('Build Docker Image') {
-            steps{
-                sh ('docker build -t teodorakocan/demo:$NEW_VERSION .')
-            }
-        }
-
-        stage('Push Docker Image Into Docker Hub') {
-            steps{
-                withCredentials([string(credentialsId: 'Docker_Password', variable: 'Docker_Password')]) 
-                {
-                    sh ('docker login -u teodorakocan -p $Docker_Password')
-                }
-                sh ('docker push teodorakocan/demo:$NEW_VERSION')
-            }
-        }
-
-        stage('Pull Image from Docker Hub') {
-            steps{
-                sh ('docker pull teodorakocan/demo:$NEW_VERSION')
+                bat '"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\MSBuild\\15.0\\Bin\\MSBuild.exe" "%WORKSPACE%\\DemoVersion.sln" /t:"Clean" /p:Configuration=Release /p:Platform="x64"'
+                bat '"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\MSBuild\\15.0\\Bin\\MSBuild.exe" "%WORKSPACE%\\DemoVersion.sln" /t:"Rebuild" /p:Configuration=Release /p:Platform="x64"'
             }
         }
     }
