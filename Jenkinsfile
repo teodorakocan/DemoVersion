@@ -8,7 +8,7 @@ pipeline {
         )
         dotnet = '${PATH}:${HOME}/.dotnet/tools'
         dotnetPath = sh(
-            script "printf \${PATH}:${HOME}"
+            script: "printf \${PATH}:${HOME}"
             returnStdout: true
         )
     }
