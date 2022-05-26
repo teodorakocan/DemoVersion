@@ -19,13 +19,13 @@ pipeline {
 
         stage ('Restore packages'){
             steps {
-                 bat 'dotnet restore DemoVersion.csproj'
+                 sh 'dotnet restore DemoVersion.csproj'
             }
         }
 
         stage ('Build') {
             steps {
-                bat 'dotnet build DemoVersion.csproj --configuration Release'
+                sh 'dotnet build DemoVersion.csproj --configuration Release'
             }
         }
     }
