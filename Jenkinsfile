@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker 
         { 
-            image 'compulim/msbuild'
+            image 'nugardt/msbuild'
         }
     }
 
