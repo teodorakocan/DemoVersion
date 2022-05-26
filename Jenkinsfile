@@ -1,12 +1,15 @@
 pipeline {
     agent any
 
+    tools{ 
+        dotnet 'dotnet-sdk:1.3.1'
+    }
+
     environment{
         NEW_VERSION = sh(
                 script: "printf \$(git rev-parse ${GIT_COMMIT})",
                 returnStdout: true
         )
-        dotnet ='C:\\Program Files (x86)\\dotnet\\'
     }
 
     stages {
