@@ -8,30 +8,32 @@ pipeline {
         )
         dotnet ='C:\\Program Files (x86)\\dotnet\\'
     }
-  stages {
-    stage ('Clean workspace')
-    {
-      steps {
-        cleanWs()
-      }
-    }
 
-    stage ('Git Checkout')
-    {
-      steps {
-         git branch: 'master', credentialsId: 'GitHubCredentials', url: 'https://github.com/teodorakocan/DemoVersion.git'
-      }
-    }
+    stages {
+        stage ('Clean workspace')
+        {
+            steps {
+                cleanWs()
+            }
+        }
 
-    stage ('Restore packages'){
-      steps {
-        bat "dotnet restore DemoVersion.csproj"
-      }
-    },
-    stage ('Build') {
-      steps {
-        "bat" "dotnet build DemoVersion.csproj --configuration Release"
-      }
+        stage ('Git Checkout')
+        {
+            steps {
+                git branch: 'master', credentialsId: 'GitHubCredentials', url: 'https://github.com/teodorakocan/DemoVersion.git'
+            }
+        }
+
+        stage ('Restore packages'){
+            steps {
+                bat "dotnet restore DemoVersion.csproj"
+            }
+        }
+
+        stage ('Build') {
+            steps {
+                bat "dotnet build DemoVersion.csproj --configuration Release"
+            }
+        }
     }
-  }
 }
