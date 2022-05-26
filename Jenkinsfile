@@ -10,6 +10,12 @@ pipeline {
     }
 
     stages {
+        stage ('Git Checkout') {
+            steps {
+                git branch: 'master', credentialsId: 'GitHubCredentials', url: 'https://github.com/teodorakocan/DemoVersion.git'
+            }
+        }
+
         stage ('Clean workspace')
         {
             steps {
