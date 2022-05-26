@@ -6,7 +6,7 @@ pipeline {
             script: "printf \$(git rev-parse ${GIT_COMMIT})",
             returnStdout: true
         )
-        dotnet= = sh(
+        dotnet = sh(
             script: "printf \${PATH}:${HOME}/.dotnet/tools",
             returnStdout: true
         )
