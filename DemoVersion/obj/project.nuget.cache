@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HFoyZ9CaO6A50EyHwd19vop6I5MFOJJn1omewzSQeaIraFMg8ml8ZTQ+jOqlAAAd5hl5DsL7/65+VRtzR6KDUA==",
+  "dgSpecHash": "Ws+ziFOJhy9fOLAml+yu6lRCpc5pTEZjAprg8mTVu1gdlnkB34brYhHNBPUtKB/jGhi1D7r7AckzQnzHi0yIoA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\teodo\\Desktop\\DemoVersion\\DemoVersion\\DemoVersion\\DemoVersion.csproj",
+  "projectFilePath": "C:\\Users\\teodo\\Desktop\\DemoVersion\\DemoVersion\\DemoVersion.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\teodo\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.15.1\\microsoft.visualstudio.azure.containers.tools.targets.1.15.1.nupkg.sha512"
   ],

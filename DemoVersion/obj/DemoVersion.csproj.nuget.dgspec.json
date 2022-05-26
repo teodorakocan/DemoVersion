@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\teodo\\Desktop\\DemoVersion\\DemoVersion\\DemoVersion\\DemoVersion.csproj": {}
+    "C:\\Users\\teodo\\Desktop\\DemoVersion\\DemoVersion\\DemoVersion.csproj": {}
   },
   "projects": {
-    "C:\\Users\\teodo\\Desktop\\DemoVersion\\DemoVersion\\DemoVersion\\DemoVersion.csproj": {
+    "C:\\Users\\teodo\\Desktop\\DemoVersion\\DemoVersion\\DemoVersion.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\teodo\\Desktop\\DemoVersion\\DemoVersion\\DemoVersion\\DemoVersion.csproj",
+        "projectUniqueName": "C:\\Users\\teodo\\Desktop\\DemoVersion\\DemoVersion\\DemoVersion.csproj",
         "projectName": "DemoVersion",
-        "projectPath": "C:\\Users\\teodo\\Desktop\\DemoVersion\\DemoVersion\\DemoVersion\\DemoVersion.csproj",
+        "projectPath": "C:\\Users\\teodo\\Desktop\\DemoVersion\\DemoVersion\\DemoVersion.csproj",
         "packagesPath": "C:\\Users\\teodo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\teodo\\Desktop\\DemoVersion\\DemoVersion\\DemoVersion\\obj\\",
+        "outputPath": "C:\\Users\\teodo\\Desktop\\DemoVersion\\DemoVersion\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\teodo\\AppData\\Roaming\\NuGet\\NuGet.Config",
