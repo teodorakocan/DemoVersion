@@ -13,6 +13,7 @@ pipeline {
         stage ('Clean workspace')
         {
             steps {
+                echo "${PATH}:${HOME}"
                 cleanWs()
             }
         }
