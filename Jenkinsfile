@@ -1,8 +1,8 @@
 pipeline {
     agent {
         docker {
-            image 'dotnet-sdk:1.3.1' 
-            args '-v /root/.m2:/root/.m2' 
+            image 'bitnami/dotnet-sdk:latest' 
+            args '-v /path/to/dotnet-persistence:/bitnami' 
         }
     }
 
