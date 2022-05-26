@@ -3,9 +3,10 @@ pipeline {
 
     environment{
         NEW_VERSION = sh(
-                script: "printf \$(git rev-parse ${GIT_COMMIT})",
-                returnStdout: true
+            script: "printf \$(git rev-parse ${GIT_COMMIT})",
+            returnStdout: true
         )
+        dotnet = '${PATH}:${HOME}/.dotnet/tools'
     }
 
     stages {
@@ -13,14 +14,12 @@ pipeline {
         stage ('Clean workspace')
         {
             steps {
-                echo "${PATH}:${HOME}"
                 cleanWs()
             }
         }
 
         stage ('Restore packages'){
             steps {
-                sh "export PATH=${PATH}:${HOME}/.dotnet/tools"
                 sh 'dotnet restore DemoVersion.csproj'
             }
         }
