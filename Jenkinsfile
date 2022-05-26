@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        docker{
-            image 'mcr.microsoft.com/dotnet/sdk:6.0'
-        }
-    }
+    agent any
 
     environment{
         NEW_VERSION = sh(
@@ -11,6 +7,10 @@ pipeline {
             returnStdout: true
         )
         dotnet = '${PATH}:${HOME}/.dotnet/tools'
+        dotnetPath = sh(
+            script "printf \${PATH}:${HOME}"
+            returnStdout: true
+        )
     }
 
     stages {
@@ -18,6 +18,11 @@ pipeline {
         stage ('Clean workspace')
         {
             steps {
+                echo "${PATH}:${HOME}/.dotnet/tools"
+                echo "${PATH}:${HOME}"
+                echo "dotnet"
+                echo "${dotnet}"
+                echo "${dotnetPath}"
                 cleanWs()
             }
         }
