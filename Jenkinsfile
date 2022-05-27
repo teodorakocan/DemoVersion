@@ -20,7 +20,7 @@ pipeline {
 
         stage('Restore packages'){
            steps{
-              bat "dotnet restore DemoVersion\\DemoVersion.csproj"
+              sh "dotnet restore DemoVersion\\DemoVersion.csproj"
            }
         }
 
