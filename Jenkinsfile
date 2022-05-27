@@ -6,7 +6,7 @@ pipeline {
             script: "printf \$(git rev-parse ${GIT_COMMIT})",
             returnStdout: true
         )
-        dotnet ='C:\\Program Files (x86)\\dotnet\\'
+        dotnet ='${workspace}/dotnet'
     }
 
     stages {
@@ -20,7 +20,7 @@ pipeline {
 
         stage('Restore packages'){
            steps{
-              sh "dotnet restore ${workspace}//DemoVersion//DemoVersion.csproj"
+              sh "dotnet restore ${workspace}/DemoVersion/DemoVersion.csproj"
            }
         }
 
