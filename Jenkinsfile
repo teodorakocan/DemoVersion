@@ -6,7 +6,7 @@ pipeline {
             script: "printf \$(git rev-parse ${GIT_COMMIT})",
             returnStdout: true
         )
-        dotnet ='C:\Program Files\dotnet'
+        dotnet ='C:\\Program Files\\dotnet'
     }
 
     stages {
